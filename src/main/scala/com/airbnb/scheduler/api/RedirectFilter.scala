@@ -49,7 +49,7 @@ class RedirectFilter @Inject()(val jobScheduler: JobScheduler) extends Filter  {
         chain.doFilter(request, response)
       } else {
         try {
-          log.info("Proxying request.")
+          log.info("Proxying request to leader: %s.".format(leaderData))
 
           val method = request.getMethod
 
@@ -102,7 +102,7 @@ class RedirectFilter @Inject()(val jobScheduler: JobScheduler) extends Filter  {
           proxy.getInputStream.close
           responseOutputStream.close
         } catch {
-          case t: Exception => log.log(Level.WARNING, "Exception while proxying!", t)
+          case t: Throwable => log.log(Level.WARNING, "Exception while proxying!", t)
         }
       }
     }

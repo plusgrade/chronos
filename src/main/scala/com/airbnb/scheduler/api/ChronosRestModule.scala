@@ -51,8 +51,10 @@ class ChronosRestModule extends ServletModule {
     bind(classOf[GraphManagementResource]).in(Scopes.SINGLETON)
     bind(classOf[StatsResource]).in(Scopes.SINGLETON)
     bind(classOf[RedirectFilter]).in(Scopes.SINGLETON)
+    bind(classOf[CorsFilter]).in(Scopes.SINGLETON)
     //This filter will redirect to the master if running in HA mode.
     filter("/*").through(classOf[RedirectFilter])
+    filter("/*").through(classOf[CorsFilter])
   }
 
   @Provides

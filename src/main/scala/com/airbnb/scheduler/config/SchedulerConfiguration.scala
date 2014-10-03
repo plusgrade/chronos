@@ -57,6 +57,10 @@ trait SchedulerConfiguration extends ScallopConf {
       "host can redirect to this elected leader",
     default = Some(java.net.InetAddress.getLocalHost().getHostName()))
 
+  lazy val allowOrigin = opt[String]("allow_origin",
+    descr = "The domain wildcard to be used for Access-Control-Allow-Origin header",
+    default = Some("*"))
+
   lazy val leaderMaxIdleTimeMs = opt[Int]("leader_max_idle_time",
     descr = "The look-ahead time for scheduling tasks in milliseconds",
     default = Some(5000))
