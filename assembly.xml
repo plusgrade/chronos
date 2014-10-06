@@ -1,0 +1,18 @@
+<assembly>
+    <id>release</id>
+    <formats>
+        <format>tar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <includes>
+                <include>bin/**</include>
+                <include>target/*.jar</include>
+            </includes>
+            <outputDirectory>.</outputDirectory>
+            <!-- filtered>true</filtered>
+            <useStrictFiltering>true</useStrictFiltering-->
+        </fileSet>
+    </fileSets>
+</assembly>
